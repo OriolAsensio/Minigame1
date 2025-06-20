@@ -45,4 +45,19 @@ public class SCR_Player : MonoBehaviour
     {
         Gizmos.DrawWireSphere(groundCheck.position, radius);
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Obstaculo"))
+        {
+
+            GameManager.Instance.ShowGameOverScreen();
+            animator.SetTrigger("Die");
+            Time.timeScale = 0f;
+        
+        }
+    }
+
+
+
 }
